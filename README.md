@@ -1,4 +1,4 @@
 #POS
 
 
-> Middleware POS
+> Middleware POS **API**
