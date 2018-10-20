@@ -1,0 +1,65 @@
+#==============================================================
+#	DISABLE INDEX FOLDER
+#==============================================================
+#Options -Indexes
+#ErrorDocument 403 "<h1>404 Not Found</h1>"
+#--------------------------------------------------------------#
+
+
+
+#==============================================================
+#	DEFAULT TIMEZONE & MAX EXECUTION TIME
+#==============================================================
+#php_value date.timezone 'Asia/Jakarta'
+#php_value max_execution_time 300
+#--------------------------------------------------------------#
+
+
+
+#==============================================================
+#	CODEIGNITER HTACCESS RULE
+#==============================================================
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* index.php/$0 [PT,L]
+#--------------------------------------------------------------#
+
+
+
+#==============================================================
+#	APP CONFIGURATION : (Default Controller | Environment)
+#==============================================================
+<IfModule mod_env.c>
+	SetEnv DefaultController site
+	SetEnv CI_ENV development
+</IfModule>
+#--------------------------------------------------------------#
+
+#==============================================================
+#	APP SECURITY : PROTECT NODEJS CONFIGURATION FILES
+#==============================================================
+
+# Database Config
+<Files ".database">
+	Order Allow,Deny
+	Deny from all
+</Files>
+
+# App Config
+<Files "app.config">
+	Order Allow,Deny
+	Deny from all
+</Files>
+
+# Site Config
+<Files "site.config">
+	Order Allow,Deny
+	Deny from all
+</Files>
+
+# NodeJS
+<Files "node_server.js">
+	Order Allow,Deny
+	Deny from all
+</Files>
