@@ -25,7 +25,35 @@ class Member extends REST_Controller
 
     function index_get()
     {
-       $this->get_last(); 
+       if(!$search){ $result = $this->model->get_last($this->modul['limit'])->result();}
+        else {$result = $this->model->search($cat,$publish)->result(); }
+    
+        $output = null;
+        if ($result){
+                
+         foreach($result as $res)
+         {   
+           $output[] = array ($res->id, $res->first_name, $res->last_name, $res->type, $res->address, $res->shipping_address, 
+                                  $res->phone1, $res->phone2, $res->fax, $res->email, $res->password, $res->website, $this->city->get_name($res->city),
+                                  $res->region, $res->zip, $res->notes, 
+                                  base_url().'images/customer/'.$res->image, $res->status , tglin($res->joined)
+                                 );
+         }
+         $response = 
+          [
+              'status' => 'success',
+              'data' => $output
+          ];
+        }
+        else
+        {
+            $response = 
+            [
+                'status' => 'failed',
+                'message_code' => 'empty_data'
+            ];
+        }
+        $this->response($response,REST_Controller::HTTP_OK); 
     }
     
     public function register()
