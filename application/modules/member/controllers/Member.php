@@ -6,6 +6,7 @@ class Member extends REST_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->library('table');
         
         $this->load->model('Member_model', 'model', TRUE);
 
@@ -95,7 +96,8 @@ class Member extends REST_Controller
         $data['source'] = site_url($this->title.'/getdatatable');
             
         // Load absen view dengan melewatkan var $data sbgai parameter
-	$this->load->view('template', $data);
+//	$this->load->view('template', $data);
+        $this->response($data,REST_Controller::HTTP_OK);
     }
     
     function publish($uid = null)
@@ -141,7 +143,7 @@ class Member extends REST_Controller
       
     }
 
-    function delete($uid)
+    function delete_uid($uid)
     {
         if ($this->acl->otentikasi_admin($this->title,'ajax') == TRUE){
             $this->model->delete($uid);
