@@ -1,0 +1,23 @@
+{
+    "development": {
+        "dsn": null,
+        "hostname": "localhost",
+        "username": "root",
+        "password": "",
+        "database": "pos",
+        "dbdriver": "mysqli",
+        "dbprefix": null,
+        "pconnect": null,
+        "db_debug": null,
+        "cache_on": null,
+        "cachedir": null,
+        "char_set": "utf8mb4",
+        "dbcollat": "utf8mb4_unicode_ci",
+        "swap_pre": null,
+        "encrypt": null,
+        "compress": null,
+        "stricton": null,
+        "failover": [],
+        "save_queries": true
+    }
+}
