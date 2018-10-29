@@ -1,45 +1,23 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
-class Member_model extends Custom_Model
+<?php defined('BASEPATH') OR exit('No direct script access allowed');
+use Illuminate\Database\Eloquent\SoftDeletes;
+class Member_model extends Eloquent_model
 {
-    protected $logs;
-    
-    function __construct()
-    {
-        parent::__construct();
-        $this->logs = new Log_lib();
-//        $this->com = new Components();
-//        $this->com = $this->com->get_id('customer');
-        $this->tableName = 'customer';
-    }
-    
-    protected $field = array('id', 'first_name', 'last_name', 'type', 'address', 'shipping_address', 'phone1', 'phone2', 'joined',
-                             'fax', 'email', 'password', 'website', 'state', 'city', 'region', 'zip', 'notes', 'image', 'status',
-                             'created', 'updated', 'deleted');
-    protected $com;
-    
-    function get_last($limit, $offset=null)
-    {
-        $this->db->select($this->field);
-        $this->db->from($this->tableName); 
-        $this->db->where('deleted', $this->deleted);
-        $this->db->order_by('id', 'desc'); 
-        $this->db->limit($limit, $offset);
-        return $this->db->get(); 
-    }
-    
-    function search($cat=null,$publish=null)
-    {   
-        $this->db->select($this->field);
-        $this->db->from($this->tableName); 
-        $this->db->where('deleted', $this->deleted);
-        $this->cek_null_string($cat, 'city');
-        $this->cek_null_string($publish, 'status');
-        
-        $this->db->order_by('id', 'asc'); 
-        return $this->db->get(); 
-    }
+	use SoftDeletes;
+	public $timestamps	= true;
+	
+	protected $table	= 'member';
+	protected $guarded	= [];
+	protected $hidden 	= [];
+	protected $fillable = 
+	[
 
+	];
+	protected $connection = ENVIRONMENT;
+
+	const CREATED_AT = 'created';
+	const UPDATED_AT = 'updated';
+	const DELETED_AT = 'deleted';
 }
 
-?>
+/* End of file Member_model.php */
+/* Location: ./application/modules/member/models/Member_model.php */
