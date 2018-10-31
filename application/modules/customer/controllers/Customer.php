@@ -9,6 +9,7 @@ class Customer extends Rest_api
 		]);
 	}
 
+	/* List Customer */
 	public function index_get()
 	{
 		$response = 
@@ -89,7 +90,13 @@ class Customer extends Rest_api
 	/* View */
 	public function view_get($id=null)
 	{
-		
+		$find_customer = $this->customer->find($id);
+		$response = 
+		[
+			'status' => (!empty($find_customer))?'success':'failed',
+			'data' => $find_customer
+		];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 }
 
