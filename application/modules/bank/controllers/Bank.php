@@ -30,6 +30,7 @@ class Bank extends Rest_api
 			array_shift($validation_errors);
 			$response = 
 			[
+				'status' => 'failed',
 				'message_code' => 'validation_error',
 				'message' => site_language('validation_error','validation error'),
 				'data' => $validation_errors
@@ -52,7 +53,30 @@ class Bank extends Rest_api
 	/* Update */
 	public function update_post()
 	{
-		$find = $this->bank->find($this->post('id'));	
+		$find = $this->bank->find($this->post('id'));
+		if(!empty($find))
+		{
+			$find->acc_name = return_if_exists($this->post(),'acc_name',$find->acc_name);
+			$find->acc_no = return_if_exists($this->post(),'acc_no',$find->acc_no);
+			$find->acc_bank = return_if_exists($this->post(),'acc_bank',$find->acc_bank);
+			$find->currency = return_if_exists($this->post(),'currency',$find->currency);
+			$find->save();
+			$response = 
+			[
+				'status' => 'success',
+				'data' => $find
+			];			
+		}
+		else
+		{
+			$response = 
+			[
+				'status' => 'failed',
+				'message_code' => 'data_not_found',
+				'message' => site_language('data_not_found','data not found')
+			];
+		}
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Delete */
