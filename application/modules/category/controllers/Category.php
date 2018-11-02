@@ -71,7 +71,6 @@ class Category extends Rest_api
 		$this->response($find->forceDelete(),REST_Controller::HTTP_OK);
 	}
 }
-}
 
 /* End of file Category.php */
 /* Location: ./application/modules/category/controllers/Category.php */
