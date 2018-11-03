@@ -8,6 +8,14 @@ class Category extends Rest_api
 			'category_model' => 'category'
 		]);
 	}
+
+	/* List */
+	public function index_get()
+	{
+		$this->response($this->category->all(),REST_Controller::HTTP_OK);	
+	}
+
+
 	/* Add */
 	public function add_post()
 	{
@@ -37,12 +45,6 @@ class Category extends Rest_api
 			];
 		}
 		$this->response($response,REST_Controller::HTTP_OK);
-	}
-
-	/* List */
-	public function list_get()
-	{
-		$this->response($this->category->all(),REST_Controller::HTTP_OK);	
 	}
 
 	/* View */
