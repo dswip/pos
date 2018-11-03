@@ -9,6 +9,12 @@ class Bank extends Rest_api
 		]);
 	}
 
+	/* List */
+	public function index_get()
+	{
+		$this->response($this->bank->all(),REST_Controller::HTTP_OK);	
+	}
+
 	/* Add Bank */
 	public function add_post()
 	{
@@ -36,12 +42,6 @@ class Bank extends Rest_api
 				'data' => $validation_errors
 			];
 		}
-	}
-
-	/* List */
-	public function list_get()
-	{
-		$this->response($this->bank->all(),REST_Controller::HTTP_OK);	
 	}
 
 	/* View */
