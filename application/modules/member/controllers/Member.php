@@ -46,31 +46,27 @@ class Member extends Rest_api
 
 		if ($this->form_validation->run() == TRUE)
 		{
-			$this->customer->member_id = $this->post('member_id');
-			$this->customer->first_name = $this->post('first_name');
-			$this->customer->last_name = $this->post('last_name');
-			$this->customer->type = $this->post('type');
-			$this->customer->address = $this->post('address');
-			$this->customer->shipping_address = $this->post('shipping_address');
-			$this->customer->phone1 = $this->post('phone1');
-			$this->customer->phone2= $this->post('phone2');
-			$this->customer->fax = $this->post('fax');
-			$this->customer->email = $this->post('email');
-			$this->customer->password = $this->post('password');
-			$this->customer->website = $this->post('website');
-			$this->customer->state = $this->post('state');
-			$this->customer->city = $this->post('city');
-			$this->customer->region = $this->post('region');
-			$this->customer->zip = $this->post('zip');
-			$this->customer->notes = $this->post('notes');
-			$this->customer->image = $this->post('image');
-			$this->customer->joined = nice_date(unix_to_human(time()),'Y-m-d H:is');
-			$this->customer->status = $this->post('status');
-			// $this->customer->save();
-			$response = 
-			[
-				'data' => $this->customer
-			];
+			$this->member->first_name = $this->post('first_name');
+			$this->member->last_name = $this->post('last_name');
+			$this->member->type = $this->post('type');
+			$this->member->address = $this->post('address');
+			$this->member->shipping_address = $this->post('shipping_address');
+			$this->member->phone1 = $this->post('phone1');
+			$this->member->phone2= $this->post('phone2');
+			$this->member->fax = $this->post('fax');
+			$this->member->email = $this->post('email');
+			$this->member->password = $this->post('password');
+			$this->member->website = $this->post('website');
+			$this->member->state = $this->post('state');
+			$this->member->city = $this->post('city');
+			$this->member->region = $this->post('region');
+			$this->member->zip = $this->post('zip');
+			$this->member->notes = $this->post('notes');
+			$this->member->image = $this->post('image');
+			$this->member->joined = nice_date(unix_to_human(time()),'Y-m-d H:is');
+			$this->member->status = $this->post('status');
+			$this->member->save();
+			$response = $this->member
 		}
 		else
 		{
