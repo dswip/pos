@@ -115,6 +115,13 @@ class Member extends Rest_api
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
+	/* Restore */
+	public function restore_post()
+	{
+		$find = $this->member->withTrashed()->find($this->post('id'));
+		$this->response($find->restore(),REST_Controller::HTTP_OK);
+	}
+
 	/* Force Delete */
 	public function force_delete_post()
 	{
