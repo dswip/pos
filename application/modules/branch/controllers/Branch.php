@@ -88,6 +88,13 @@ class Branch extends Rest_api
 		$this->response($find->delete(),REST_Controller::HTTP_OK);
 	}
 
+	/* Restore */
+	public function restore_post()
+	{
+		$find = $this->branch->withTrashed()->find($this->post('id'));
+		$this->response($find->restore(),REST_Controller::HTTP_OK);
+	}
+
 	/* Force Delete */
 	public function force_delete_post()
 	{
