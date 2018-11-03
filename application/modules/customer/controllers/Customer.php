@@ -40,7 +40,6 @@ class Customer extends Rest_api
 		$this->form_validation->set_rules('region', 'region', 'trim|required');
 		$this->form_validation->set_rules('zip', 'zip', 'trim|required');
 		$this->form_validation->set_rules('notes', 'notes', 'trim|required');
-		$this->form_validation->set_rules('image', 'image', 'trim|required');
 		$this->form_validation->set_rules('status', 'status', 'trim|required|integer');
 		$this->form_validation->set_data($this->post());
 
@@ -66,11 +65,8 @@ class Customer extends Rest_api
 			$this->customer->image = $this->post('image');
 			$this->customer->joined = nice_date(unix_to_human(time()),'Y-m-d H:is');
 			$this->customer->status = $this->post('status');
-			// $this->customer->save();
-			$response = 
-			[
-				'data' => $this->customer
-			];
+			$this->customer->save();
+			$response = $this->customer;
 		}
 		else
 		{
