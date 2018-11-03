@@ -11,10 +11,10 @@ class Category extends Rest_api
 	/* Add */
 	public function add_post()
 	{
-		$this->form_validation->set_rules('code', 'code', 'trim|required');
+		$this->form_validation->set_rules('code', 'code', 'trim|required|is_unique[category.code]');
+		$this->form_validation->set_rules('name', 'name', 'trim|required');
 		$this->form_validation->set_rules('parent_id', 'parent_id', 'trim|required');
 		$this->form_validation->set_rules('publish', 'publish', 'trim|required');
-		$this->form_validation->set_rules('image', 'image', 'trim|required');
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->category->code = $this->post('code');
