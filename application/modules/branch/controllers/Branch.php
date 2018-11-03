@@ -8,6 +8,13 @@ class Branch extends Rest_api
 			'branch_model' => 'branch'
 		]);
 	}
+
+	/* List */
+	public function index_get()
+	{
+		$this->response($this->branch->all(),REST_Controller::HTTP_OK);	
+	}
+
 	/* Add */
 	public function add_post()
 	{
@@ -61,12 +68,6 @@ class Branch extends Rest_api
 			];
 		}
 		$this->response($response,REST_Controller::HTTP_OK);
-	}
-
-	/* List */
-	public function list_get()
-	{
-		$this->response($this->branch->all(),REST_Controller::HTTP_OK);	
 	}
 
 	/* View */
