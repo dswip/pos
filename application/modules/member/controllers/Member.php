@@ -66,7 +66,7 @@ class Member extends Rest_api
 			$this->member->joined = nice_date(unix_to_human(time()),'Y-m-d H:is');
 			$this->member->status = $this->post('status');
 			$this->member->save();
-			$response = $this->member
+			$response = $this->member;
 		}
 		else
 		{
