@@ -1,0 +1,215 @@
+{
+	"info": {
+		"_postman_id": "80e7e26f-87e5-4035-aa81-b55dc0d3af3d",
+		"name": "POS",
+		"description": "> Customer Module",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "customer",
+			"description": "> Customer Module",
+			"item": [
+				{
+					"name": "Customer List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/customer",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"customer"
+							]
+						},
+						"description": "# Rest From Table Customer\n\t\n- create\n- view\n- list\n- update\n- delete\n- force delete"
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"member_id\":1,\n\t\"type\":\"member\",\n\t\"first_name\":\"Agung\",\n\t\"email\":\"agungmasda29@gmail.com\",\n\t\"address\":\"Jl.Bilal\",\n\t\"shipping_address\":\"Jl Bilal\",\n\t\"phone1\":\"082167368585\",\n\t\"phone2\":\"082167368438\",\n\t\"fax\":\"1337\",\n\t\"password\":\"password\",\n\t\"website\":\"agungdirgantara.id\",\n\t\"state\":\"Indonesia\",\n\t\"city\":\"medan\",\n\t\"region\":\"sumatera\",\n\t\"zip\":1337,\n\t\"notes\":\"Jangan Nakal\",\n\t\"image\":\"No\",\n\t\"status\":1\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/customer/add",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"customer",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "kabupaten",
+			"description": "",
+			"item": [
+				{
+					"name": "Get List Kabupaten",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost/middleware/kabupaten",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"middleware",
+								"kabupaten"
+							]
+						},
+						"description": "> Query Column Using Data Tables Query\n\n\nparameters :\n- ajax **(BOOL)** *set to true if you want use limit offset*\n- start **(INT)** *start data page (offset)*\n- length **(INT)** *length data (limit)*"
+					},
+					"response": [
+						{
+							"id": "5d29cad1-2947-4743-9612-9c7ad917c261",
+							"name": "List & Query With AJax",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://localhost/middleware/kabupaten?length=10&ajax=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"middleware",
+										"kabupaten"
+									],
+									"query": [
+										{
+											"key": "length",
+											"value": "10"
+										},
+										{
+											"key": "ajax",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "582",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 05 Nov 2018 09:09:54 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.35 (Unix) OpenSSL/1.0.2p PHP/7.2.11 mod_perl/2.0.8-dev Perl/v5.16.3",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.11",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Mon Nov 05 2018 18:07:59 GMT+0700 (WIB)",
+									"httpOnly": true,
+									"domain": "localhost",
+									"path": "/",
+									"secure": false,
+									"value": "b43caf5f2a7c13f4d1994cb2a2788ef097a95f4e",
+									"key": "ci_session"
+								}
+							],
+							"body": "{\"draw\":false,\"record_total\":499,\"record_filtered\":499,\"data\":[{\"id\":1101,\"id_prov\":\"11\",\"nama\":\"Kab. Simeulue\"},{\"id\":1102,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Singkil\"},{\"id\":1103,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Selatan\"},{\"id\":1104,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tenggara\"},{\"id\":1105,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Timur\"},{\"id\":1106,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tengah\"},{\"id\":1107,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat\"},{\"id\":1108,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Besar\"},{\"id\":1109,\"id_prov\":\"11\",\"nama\":\"Kab. Pidie\"},{\"id\":1110,\"id_prov\":\"11\",\"nama\":\"Kab. Bireuen\"}]}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
