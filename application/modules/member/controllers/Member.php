@@ -9,14 +9,31 @@ class Member extends Rest_api
 		]);
 	}
 
-	/* List Member */
+	/* List */
 	public function index_get()
 	{
-		$response = 
+		$model 			= $this->member;
+		$record_total	= $model->count();
+		$query 			= $this->input->get();
+		if(filter_var(return_if_exists($query,'ajax',false),FILTER_VALIDATE_BOOLEAN))
+		{
+			$limit 		= (isset($query['length']) && $query['length'] != -1)?$query['length'] : $model::count();
+			$offset 	= (isset($query['start']))? $query['start'] : 0;
+			$model 		= datatable_query($model,$query);
+			$get_data 	= $model->limit($limit)->offset($offset)->get();
+		}
+		else
+		{
+			$get_data 	= (isset($query['in_trash']))?$model->onlyTrashed()->get():$model->get();
+		}
+		
+		
+		$response 				= 
 		[
-			'status' => 'success',
-			'data' => $this->member->all(),
-			'record_total' => $this->member->count()
+			'draw'				=> (isset($query['draw']))?$query['draw']:false,
+			'record_total'		=> $record_total,
+			'record_filtered'	=> $record_total,
+			'data' 				=> $get_data
 		];
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
