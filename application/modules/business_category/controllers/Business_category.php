@@ -1,5 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-class Business_category extends MX_Controller
+class Business_category extends Rest_api
 {
 	function __construct()
 	{
