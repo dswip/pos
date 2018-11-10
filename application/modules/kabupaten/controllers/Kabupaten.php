@@ -43,6 +43,7 @@ class Kabupaten extends Rest_api
 	{
 		$this->form_validation->set_rules('id_prov', 'id_prov', 'trim|required');
 		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$this->form_validation->set_data($this->post());
 		if ($this->form_validation->run() == TRUE)
 		{
 			$this->kabupaten->id_prov = $this->post('id_prov');
@@ -66,7 +67,7 @@ class Kabupaten extends Rest_api
 	}
 
 	/* View */
-	public function view_get()
+	public function view_get($id=null)
 	{
 		$this->response($this->kabupaten->find($id),REST_Controller::HTTP_OK);
 	}
