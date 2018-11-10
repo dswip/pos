@@ -49,6 +49,7 @@ class Discount extends Rest_api
 		$this->form_validation->set_rules('minimum', 'minimum', 'trim|required');
 		$this->form_validation->set_rules('percentage', 'percentage', 'trim|required');
 		$this->form_validation->set_rules('status', 'status', 'trim|required');
+		$this->form_validation->set_data($this->post());
 		if ($this->form_validation->run() == TRUE)
 		{
 			$this->discount->member_id = $this->post('member_id');

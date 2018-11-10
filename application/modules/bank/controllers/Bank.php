@@ -45,6 +45,7 @@ class Bank extends Rest_api
 		$this->form_validation->set_rules('acc_no', 'account number', 'trim|required');
 		$this->form_validation->set_rules('acc_bank', 'account bank', 'trim|required');
 		$this->form_validation->set_rules('currency', 'currency', 'trim|required');
+		$this->form_validation->set_data($this->post());
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->bank->acc_name = $this->post('acc_name');

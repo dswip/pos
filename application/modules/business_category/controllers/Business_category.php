@@ -44,6 +44,7 @@ class Business_category extends Rest_api
 		$this->form_validation->set_rules('member_id', 'member id', 'trim|required');
 		$this->form_validation->set_rules('name', 'name', 'trim|required');
 		$this->form_validation->set_rules('description', 'description', 'trim|required');
+		$this->form_validation->set_data($this->post());
 		if ($this->form_validation->run() == TRUE)
 		{
 			$this->business_category->member_id = $this->post('member_id');

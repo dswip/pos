@@ -44,6 +44,7 @@ class Tax extends Rest_api
 		$this->form_validation->set_rules('member_id', 'member_id', 'trim|required');
 		$this->form_validation->set_rules('name', 'name', 'trim|required');
 		$this->form_validation->set_rules('code', 'code', 'trim|required|is_unique[tax.code]');
+		$this->form_validation->set_data($this->post());
 		if ($this->form_validation->run() == TRUE)
 		{
 			$this->tax->member_id = $this->post('member_id');

@@ -46,6 +46,7 @@ class Category extends Rest_api
 		$this->form_validation->set_rules('name', 'name', 'trim|required');
 		$this->form_validation->set_rules('parent_id', 'parent_id', 'trim|required');
 		$this->form_validation->set_rules('publish', 'publish', 'trim|required');
+		$this->form_validation->set_data($this->post());
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->category->code = $this->post('code');

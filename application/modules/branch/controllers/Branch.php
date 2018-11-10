@@ -58,6 +58,7 @@ class Branch extends Rest_api
 		$this->form_validation->set_rules('ar_account', 'ar_account', 'trim|required');
 		$this->form_validation->set_rules('bank_account', 'bank_account', 'trim|required');
 		$this->form_validation->set_rules('cash_account', 'cash_account', 'trim|required');
+		$this->form_validation->set_data($this->post());
 		if($this->form_validation->run() == TRUE)
 		{
 			$this->branch->member_id = $this->post('member_id');

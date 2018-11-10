@@ -46,6 +46,7 @@ class Manufacture extends Rest_api
 		$this->form_validation->set_rules('member_id', 'member_id', 'trim|required');
 		$this->form_validation->set_rules('name', 'name', 'trim|required');
 		$this->form_validation->set_rules('orders', 'orders', 'trim|required');
+		$this->form_validation->set_data($this->post());
 		if ($this->form_validation->run() == TRUE)
 		{
 			$this->manufacture->member_id = $this->post('member_id');
