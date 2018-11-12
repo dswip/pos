@@ -2,6 +2,11 @@
 use Illuminate\Database\Eloquent\Model;
 class Eloquent_model extends Model
 {
+	function __construct()
+	{
+		parent::__construct();
+	}
+
 	/* Set Model Connection */
 	public function activateGroup($connection)
 	{
