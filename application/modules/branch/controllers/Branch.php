@@ -150,7 +150,8 @@ class Branch extends Rest_api
 				$find->save();
 				$response = 
 				[
-					'status' => 'success'
+					'status' => 'success',
+					'data' => $find
 				];
 			}
 			else
