@@ -78,29 +78,58 @@ class Category extends Rest_api
 	}
 
 	/* Update */
-	public function update_post()
+	public function update_post($id=null)
 	{
-		$find = $this->category->find($this->post('id'));	
+		$this->form_validation->set_rules('code', 'code', 'trim|required|is_unique[category.code]');
+		$this->form_validation->set_rules('name', 'name', 'trim|required');
+		$this->form_validation->set_rules('parent_id', 'parent_id', 'trim|required');
+		$this->form_validation->set_rules('publish', 'publish', 'trim|required');
+		$this->form_validation->set_data($this->post());
+		if($this->form_validation->run() == TRUE)
+		{
+			$find = $this->category->find($id);
+			$find->code = $this->post('code');
+			$find->name = $this->post('name');
+			$find->publish = $this->post('publish');
+			$find->image = $this->post('image');
+			$find->save();
+			$response = 
+			[
+				'status' => 'success'
+			];
+		}
+		else
+		{
+			$validation_errors = explode('<p>',str_replace('</p>','',validation_errors()));
+			array_shift($validation_errors);
+			$response = 
+			[
+				'status' => 'failed',
+				'message_code' => 'validation_error',
+				'message' => site_language('validation_error','validation error'),
+				'data' => $validation_errors
+			];
+		}
 	}
 
 	/* Delete */
-	public function delete_post()
+	public function delete_post($id=null)
 	{
-		$find = $this->category->find($this->post('id'));
+		$find = $this->category->find($id);
 		$this->response($find->delete(),REST_Controller::HTTP_OK);
 	}
 
 	/* Restore */
-	public function restore_post()
+	public function restore_get($id=null)
 	{
-		$find = $this->category->withTrashed()->find($this->post('id'));
+		$find = $this->category->withTrashed()->find($id);
 		$this->response($find->restore(),REST_Controller::HTTP_OK);
 	}
 
 	/* Force Delete */
-	public function force_delete_post()
+	public function force_delete_get($id=null)
 	{
-		$find = $this->category->withTrashed()->find($this->post('id'));
+		$find = $this->category->withTrashed()->find($id);
 		$this->response($find->forceDelete(),REST_Controller::HTTP_OK);
 	}
 }
