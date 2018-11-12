@@ -114,7 +114,7 @@ class Business_category extends Rest_api
 	public function restore_get($id=null)
 	{
 		$find = $this->business_category->withTrashed()->find($id);
-		$this->response($find->restore():$find,REST_Controller::HTTP_OK);
+		$this->response($find->restore(),REST_Controller::HTTP_OK);
 	}
 
 	/* Force Delete */
