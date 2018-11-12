@@ -7,6 +7,184 @@
 	},
 	"item": [
 		{
+			"name": "bank",
+			"description": "",
+			"item": [
+				{
+					"name": "Get List Bank",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/branch",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "branch",
+			"description": "",
+			"item": [
+				{
+					"name": "Get List Branch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "business_category",
+			"description": "",
+			"item": [
+				{
+					"name": "Get List Business Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/business_category",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"business_category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Business Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/business_category/add",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"business_category",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Business Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/business_category/view/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"business_category",
+								"view",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Business Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Hair Salons\"\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/business_category/update/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"business_category",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Business Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/business_category/delete/2",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"business_category",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore Business Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/business_category/restore/2",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"business_category",
+								"restore",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category",
+			"description": "",
+			"item": []
+		},
+		{
 			"name": "customer",
 			"description": "> Customer Module",
 			"item": [
@@ -59,6 +237,16 @@
 			]
 		},
 		{
+			"name": "customer",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "discount",
+			"description": "",
+			"item": []
+		},
+		{
 			"name": "kabupaten",
 			"description": "",
 			"item": [
@@ -69,13 +257,11 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost/middleware/kabupaten",
-							"protocol": "http",
+							"raw": "{{api_url}}/kabupaten",
 							"host": [
-								"localhost"
+								"{{api_url}}"
 							],
 							"path": [
-								"middleware",
 								"kabupaten"
 							]
 						},
@@ -83,7 +269,134 @@
 					},
 					"response": [
 						{
-							"id": "5d29cad1-2947-4743-9612-9c7ad917c261",
+							"id": "9158bb6f-20e9-400a-bf20-2138abe0249f",
+							"name": "Search Query",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "{{api_url}}/kabupaten?ajax=1&search[value]=aceh&columns",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"kabupaten"
+									],
+									"query": [
+										{
+											"key": "ajax",
+											"value": "1"
+										},
+										{
+											"key": "search[value]",
+											"value": "aceh"
+										},
+										{
+											"key": "columns",
+											"value": null
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method",
+									"name": "Access-Control-Allow-Headers",
+									"description": "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+									"name": "Access-Control-Allow-Methods",
+									"description": "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*",
+									"name": "Access-Control-Allow-Origin",
+									"description": "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store, no-cache, must-revalidate",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Connection",
+									"value": "Keep-Alive",
+									"name": "Connection",
+									"description": "Options that are desired for the connection"
+								},
+								{
+									"key": "Content-Length",
+									"value": "702",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Nov 2018 07:14:02 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "Thu, 19 Nov 1981 08:52:00 GMT",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5, max=100",
+									"name": "Keep-Alive",
+									"description": "Custom header"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Server",
+									"value": "Apache/2.4.35 (Unix) OpenSSL/1.0.2p PHP/7.2.11 mod_perl/2.0.8-dev Perl/v5.16.3",
+									"name": "Server",
+									"description": "A name for the server"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/7.2.11",
+									"name": "X-Powered-By",
+									"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Mon Nov 12 2018 16:12:27 GMT+0700 (WIB)",
+									"httpOnly": true,
+									"domain": "localhost",
+									"path": "/",
+									"secure": false,
+									"value": "d6f7713617980ba5275b857f2dbf32569ecad879",
+									"key": "ci_session"
+								}
+							],
+							"body": "{\"draw\":false,\"record_total\":500,\"record_filtered\":500,\"data\":[{\"id\":1102,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Singkil\"},{\"id\":1103,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Selatan\"},{\"id\":1104,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tenggara\"},{\"id\":1105,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Timur\"},{\"id\":1106,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tengah\"},{\"id\":1107,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat\"},{\"id\":1108,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Besar\"},{\"id\":1111,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Utara\"},{\"id\":1112,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat Daya\"},{\"id\":1114,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tamiang\"},{\"id\":1116,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Jaya\"},{\"id\":1171,\"id_prov\":\"11\",\"nama\":\"Kota Banda Aceh\"}]}"
+						},
+						{
+							"id": "55436d54-6a15-4d14-bde7-5dd7ed5ed431",
 							"name": "List & Query With AJax",
 							"originalRequest": {
 								"method": "GET",
@@ -208,8 +521,70 @@
 							"body": "{\"draw\":false,\"record_total\":499,\"record_filtered\":499,\"data\":[{\"id\":1101,\"id_prov\":\"11\",\"nama\":\"Kab. Simeulue\"},{\"id\":1102,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Singkil\"},{\"id\":1103,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Selatan\"},{\"id\":1104,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tenggara\"},{\"id\":1105,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Timur\"},{\"id\":1106,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tengah\"},{\"id\":1107,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat\"},{\"id\":1108,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Besar\"},{\"id\":1109,\"id_prov\":\"11\",\"nama\":\"Kab. Pidie\"},{\"id\":1110,\"id_prov\":\"11\",\"nama\":\"Kab. Bireuen\"}]}"
 						}
 					]
+				},
+				{
+					"name": "Kabupaten Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_prov\":2,\n\t\"nama\":\"kabupaten\"\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/kabupaten/add",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"kabupaten",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kabupaten View",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/kabupaten/view/1101",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"kabupaten",
+								"view",
+								"1101"
+							]
+						}
+					},
+					"response": []
 				}
 			]
+		},
+		{
+			"name": "manufacture",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "member",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "tax",
+			"description": "",
+			"item": []
 		}
 	]
 }
