@@ -75,9 +75,9 @@ class Business_category extends Rest_api
 	}
 
 	/* Update */
-	public function update_post()
+	public function update_post($id=null)
 	{
-		$find = $this->business_category->find($this->post('id'));
+		$find = $this->business_category->find($id);
 		if(!empty($find))
 		{
 			$find->member_id = return_if_exists($this->post(),'member_id',$find->member_id);
@@ -104,23 +104,23 @@ class Business_category extends Rest_api
 	}
 
 	/* Delete */
-	public function delete_post()
+	public function delete_get($id=null)
 	{
-		$find = $this->business_category->find($this->post('id'));
+		$find = $this->business_category->find($id);
 		$this->response($find->delete(),REST_Controller::HTTP_OK);
 	}
 
 	/* Restore */
-	public function restore_post()
+	public function restore_get($id=null)
 	{
-		$find = $this->business_category->withTrashed()->find($this->post('id'));
-		$this->response($find->restore(),REST_Controller::HTTP_OK);
+		$find = $this->business_category->withTrashed()->find($id);
+		$this->response($find->restore():$find,REST_Controller::HTTP_OK);
 	}
 
 	/* Force Delete */
-	public function force_delete_post()
+	public function force_delete_get($id=null)
 	{
-		$find = $this->business_category->withTrashed()->find($this->post('id'));
+		$find = $this->business_category->withTrashed()->find($id);
 		$this->response($find->forceDelete(),REST_Controller::HTTP_OK);
 	}
 }
