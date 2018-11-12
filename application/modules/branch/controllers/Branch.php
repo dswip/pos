@@ -75,6 +75,9 @@ class Branch extends Rest_api
 			$this->branch->defaults = $this->post('defaults');
 			$this->branch->sales_account = $this->post('sales_account');
 			$this->branch->stock_account = $this->post('stock_account');
+			$this->branch->unit_cost_account = $this->post('unit_cost_account');
+			$this->branch->ar_account = $this->post('ar_account');
+			$this->branch->bank_account = $this->post('bank_account');
 			$this->branch->cash_account = $this->post('cash_account');
 			$this->branch->save();
 			$response = $this->branch;
@@ -101,29 +104,98 @@ class Branch extends Rest_api
 	}
 
 	/* Update */
-	public function update_post()
+	public function update_post($id)
 	{
-		$find = $this->branch->find($this->post('id'));	
+		$find = $this->branch->find($id);
+		$this->form_validation->set_rules('member_id', 'member id', 'trim|required');
+		$this->form_validation->set_rules('code', 'code', 'trim|required');
+		$this->form_validation->set_rules('name', 'name', 'trim|required');
+		$this->form_validation->set_rules('address', 'address', 'trim|required');
+		$this->form_validation->set_rules('phone', 'phone', 'trim|required');
+		$this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
+		$this->form_validation->set_rules('email', 'email', 'trim|valid_email');
+		$this->form_validation->set_rules('city', 'city', 'trim|required');
+		$this->form_validation->set_rules('zip', 'zip', 'trim|required');
+		$this->form_validation->set_rules('publish', 'publish', 'trim|required');
+		$this->form_validation->set_rules('defaults', 'defaults', 'trim|required');
+		$this->form_validation->set_rules('sales_account', 'sales_account', 'trim|required');
+		$this->form_validation->set_rules('stock_account', 'stock_account', 'trim|required');
+		$this->form_validation->set_rules('unit_cost_account', 'unit_cost_account', 'trim|required');
+		$this->form_validation->set_rules('ar_account', 'ar_account', 'trim|required');
+		$this->form_validation->set_rules('bank_account', 'bank_account', 'trim|required');
+		$this->form_validation->set_rules('cash_account', 'cash_account', 'trim|required');
+		$this->form_validation->set_data($this->post());
+		$this->form_validation->set_data($this->post());
+		if($this->form_validation->run() == TRUE)
+		{
+			if(!empty($find))
+			{
+				$find->member_id = $this->post('member_id');
+				$find->code = $this->post('code');
+				$find->name = $this->post('name');
+				$find->address = $this->post('address');
+				$find->phone = $this->post('phone');
+				$find->mobile = $this->post('mobile');
+				$find->email = $this->post('email');
+				$find->city = $this->post('city');
+				$find->zip = $this->post('zip');
+				$find->image = $this->post('image');
+				$find->defaults = $this->post('defaults');
+				$find->sales_account = $this->post('sales_account');
+				$find->stock_account = $this->post('stock_account');
+				$find->unit_cost_account = $this->post('unit_cost_account');
+				$find->ar_account = $this->post('ar_account');
+				$find->bank_account = $this->post('bank_account');
+				$find->cash_account = $this->post('cash_account');
+				$find->save();
+				$response = 
+				[
+					'status' => 'success'
+				];
+			}
+			else
+			{
+				$response = 
+				[
+					'status' => 'failed',
+					'message_code' => 'data_not_found',
+					'message' => site_language('data_not_found','data not found')
+				];
+			}
+		}
+		else
+		{
+			$validation_errors = explode('<p>',str_replace('</p>','',validation_errors()));
+			array_shift($validation_errors);
+			$response = 
+			[
+				'status' => 'failed',
+				'message_code' => 'validation_error',
+				'message' => site_language('validation_error','validation error'),
+				'data' => $validation_errors
+			];
+		}
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Delete */
-	public function delete_post()
+	public function delete_get($id=null)
 	{
-		$find = $this->branch->find($this->post('id'));
+		$find = $this->branch->find($id);
 		$this->response($find->delete(),REST_Controller::HTTP_OK);
 	}
 
 	/* Restore */
-	public function restore_post()
+	public function restore_get($id=null)
 	{
-		$find = $this->branch->withTrashed()->find($this->post('id'));
+		$find = $this->branch->withTrashed()->find($id);
 		$this->response($find->restore(),REST_Controller::HTTP_OK);
 	}
 
 	/* Force Delete */
-	public function force_delete_post()
+	public function force_delete_get($id=null)
 	{
-		$find = $this->branch->withTrashed()->find($this->post('id'));
+		$find = $this->branch->withTrashed()->find($id);
 		$this->response($find->forceDelete(),REST_Controller::HTTP_OK);
 	}
 }
