@@ -54,11 +54,25 @@ function datatable_query($model,$query)
 
     if(isset($query['only_trash']) && filter_var($query['only_trash'],FILTER_VALIDATE_BOOLEAN))
     {
-        $_model = $_model->onlyTrashed();
+        try 
+        {
+            $_model = $_model->onlyTrashed();
+        }
+        catch (Exception $e)
+        {
+
+        }
     }
     elseif(isset($query['with_trash']) && filter_var($query['with_trash'],FILTER_VALIDATE_BOOLEAN))
     {
-        $_model = $_model->withTrashed();
+        try 
+        {
+            $_model = $_model->withTrashed();
+        }
+        catch (Exception $e)
+        {
+            
+        }
     }
 
     if(!empty($search))
