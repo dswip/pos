@@ -46,12 +46,21 @@ function return_if_exists($data,$key=null,$onEmpty=null)
     }
 }
 
-
+/* Data Table Query */
 function datatable_query($model,$query)
 {
     $search = (isset($query['search']['value']))?$query['search']['value']:FALSE;
     $_model = $model;
-    (isset($query['in_trash']))? $_model = $_model->onlyTrashed():FALSE;
+
+    if(isset($query['only_trash']) && filter_var($query['only_trash'],FILTER_VALIDATE_BOOLEAN))
+    {
+        $_model = $_model->onlyTrashed();
+    }
+    elseif(isset($query['with_trash']) && filter_var($query['with_trash'],FILTER_VALIDATE_BOOLEAN))
+    {
+        $_model = $_model->withTrashed();
+    }
+
     if(!empty($search))
     {
         foreach (show_columns($model->getTable()) as $column_key => $column)
