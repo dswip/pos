@@ -41,7 +41,93 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": ""
+							"raw": "{{api_url}}/branch",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Branch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/branch/view/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"branch",
+								"view",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Branch",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/branch/update/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"branch",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Branch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/branch/delete/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"branch",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Force Delete Branch",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/branch/force_delete/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"branch",
+								"force_delete",
+								"1"
+							]
 						}
 					},
 					"response": []
@@ -182,7 +268,65 @@
 		{
 			"name": "category",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "Get List Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/category",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/category/add",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"category",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/category/view/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"category",
+								"view",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "customer",
@@ -237,14 +381,87 @@
 			]
 		},
 		{
-			"name": "customer",
-			"description": "",
-			"item": []
-		},
-		{
 			"name": "discount",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "Get List Discount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/discount",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"discount"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Discount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/discount/add",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"discount",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Discount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/discount/update/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"discount",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Discount",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/discount/delete/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"discount",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "kabupaten",
@@ -269,7 +486,7 @@
 					},
 					"response": [
 						{
-							"id": "9158bb6f-20e9-400a-bf20-2138abe0249f",
+							"id": "9154bf4e-303b-4a16-a976-f2cec88b88c3",
 							"name": "Search Query",
 							"originalRequest": {
 								"method": "GET",
@@ -396,7 +613,7 @@
 							"body": "{\"draw\":false,\"record_total\":500,\"record_filtered\":500,\"data\":[{\"id\":1102,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Singkil\"},{\"id\":1103,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Selatan\"},{\"id\":1104,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tenggara\"},{\"id\":1105,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Timur\"},{\"id\":1106,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tengah\"},{\"id\":1107,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat\"},{\"id\":1108,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Besar\"},{\"id\":1111,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Utara\"},{\"id\":1112,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat Daya\"},{\"id\":1114,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tamiang\"},{\"id\":1116,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Jaya\"},{\"id\":1171,\"id_prov\":\"11\",\"nama\":\"Kota Banda Aceh\"}]}"
 						},
 						{
-							"id": "55436d54-6a15-4d14-bde7-5dd7ed5ed431",
+							"id": "d7d6fee5-19e9-440b-8bf3-e46421e5ace7",
 							"name": "List & Query With AJax",
 							"originalRequest": {
 								"method": "GET",
@@ -574,7 +791,40 @@
 		{
 			"name": "manufacture",
 			"description": "",
-			"item": []
+			"item": [
+				{
+					"name": "Query Only Trashed",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/manufacture?ajax=true&length=1&only_trash=1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"manufacture"
+							],
+							"query": [
+								{
+									"key": "ajax",
+									"value": "true"
+								},
+								{
+									"key": "length",
+									"value": "1"
+								},
+								{
+									"key": "only_trash",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "member",
@@ -585,6 +835,157 @@
 			"name": "tax",
 			"description": "",
 			"item": []
+		},
+		{
+			"name": "kecamatan",
+			"description": null,
+			"item": [
+				{
+					"name": "List Kecamatan With Query",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/kecamatan/list?\najax=true&\ncolumns[0][data]=id&\ncolumns[0][name]=&\ncolumns[0][searchable]=false&\ncolumns[0][orderable]=false&\ncolumns[0][search][value]=&\ncolumns[0][search][regex]=false&\ncolumns[1][data]=&\ncolumns[1][name]=&\ncolumns[1][searchable]=true&\ncolumns[1][orderable]=true&\ncolumns[1][search][value]=&\ncolumns[1][search][regex]=false&\ncolumns[2][data]=id_kabupaten&\ncolumns[2][name]=&\ncolumns[2][searchable]=true&\ncolumns[2][orderable]=true&\ncolumns[2][search][value]=&\ncolumns[2][search][regex]=false&\ncolumns[3][data]=nama&\ncolumns[3][name]=&\ncolumns[3][searchable]=true&\ncolumns[3][orderable]=true&\ncolumns[3][search][value]=&\ncolumns[3][search][regex]=false&\norder[0][column]=3&\norder[0][dir]=asc&\nstart=0&\nlength=10&\nsearch[value]=&\nsearch[regex]=false",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"kecamatan",
+								"list"
+							],
+							"query": [
+								{
+									"key": "\najax",
+									"value": "true"
+								},
+								{
+									"key": "\ncolumns[0][data]",
+									"value": "id"
+								},
+								{
+									"key": "\ncolumns[0][name]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[0][searchable]",
+									"value": "false"
+								},
+								{
+									"key": "\ncolumns[0][orderable]",
+									"value": "false"
+								},
+								{
+									"key": "\ncolumns[0][search][value]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[0][search][regex]",
+									"value": "false"
+								},
+								{
+									"key": "\ncolumns[1][data]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[1][name]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[1][searchable]",
+									"value": "true"
+								},
+								{
+									"key": "\ncolumns[1][orderable]",
+									"value": "true"
+								},
+								{
+									"key": "\ncolumns[1][search][value]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[1][search][regex]",
+									"value": "false"
+								},
+								{
+									"key": "\ncolumns[2][data]",
+									"value": "id_kabupaten"
+								},
+								{
+									"key": "\ncolumns[2][name]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[2][searchable]",
+									"value": "true"
+								},
+								{
+									"key": "\ncolumns[2][orderable]",
+									"value": "true"
+								},
+								{
+									"key": "\ncolumns[2][search][value]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[2][search][regex]",
+									"value": "false"
+								},
+								{
+									"key": "\ncolumns[3][data]",
+									"value": "nama"
+								},
+								{
+									"key": "\ncolumns[3][name]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[3][searchable]",
+									"value": "true"
+								},
+								{
+									"key": "\ncolumns[3][orderable]",
+									"value": "true"
+								},
+								{
+									"key": "\ncolumns[3][search][value]",
+									"value": ""
+								},
+								{
+									"key": "\ncolumns[3][search][regex]",
+									"value": "false"
+								},
+								{
+									"key": "\norder[0][column]",
+									"value": "3"
+								},
+								{
+									"key": "\norder[0][dir]",
+									"value": "asc"
+								},
+								{
+									"key": "\nstart",
+									"value": "0"
+								},
+								{
+									"key": "\nlength",
+									"value": "10"
+								},
+								{
+									"key": "\nsearch[value]",
+									"value": ""
+								},
+								{
+									"key": "\nsearch[regex]",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
