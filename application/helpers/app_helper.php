@@ -75,7 +75,10 @@ function datatable_query($model,$query)
             {
                 $search_column = $query['columns'][$key]['data'];
                 $search_value  = $query['columns'][$key]['search']['value'];
-                $_model = $_model->where($search_column,'LIKE','%'.$search_value.'%');
+                if(in_array($search_column, show_columns($model->getTable())))
+                {
+                    $_model = $_model->where($search_column,'LIKE','%'.$search_value.'%');
+                }
             }
         }
     }
@@ -94,7 +97,7 @@ function datatable_query($model,$query)
             }
             else
             {
-                $column = 'id';
+                $column = $model->getKeyName();
             }
         }
 
