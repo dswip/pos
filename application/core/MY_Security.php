@@ -1,6 +1,13 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
+use Lcobucci\JWT\Builder;
 class MY_Security extends CI_Security
 {
+
+	public function jwt()
+	{
+		return new Builder();
+	}
+
 	/* Get User Agent */
 	public function get_user_agent()
 	{
