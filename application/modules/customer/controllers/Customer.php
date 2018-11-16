@@ -83,7 +83,11 @@ class Customer extends Rest_api
 			$this->customer->joined = nice_date(unix_to_human(time()),'Y-m-d H:is');
 			$this->customer->status = $this->post('status');
 			$this->customer->save();
-			$response = $this->customer;
+			$response = 
+			[
+				'status' => 'success',
+				'data' => $this->customer
+			];
 		}
 		else
 		{
@@ -103,12 +107,38 @@ class Customer extends Rest_api
 	/* View */
 	public function view_get($id=null)
 	{
-		$find_customer = $this->customer->find($id);
-		$response = 
-		[
-			'status' => (!empty($find_customer))?'success':'failed',
-			'data' => $find_customer
-		];
+		$find = $this->customer->find($id);
+		$response = (!empty($find))?['status' => 'success','data' => $find]:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
+
+	/* Update */
+	public function update_post()
+	{
+		
+	}
+
+	/* Delete */
+	public function delete_get($id=null)
+	{
+		$find = $this->customer->find($id);
+		$response = (!empty($find))?['status' => ($find->delete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
+
+	/* Restore */
+	public function restore_get($id=null)
+	{
+		$find = $this->customer->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->restore())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
+
+	/* Force Delete */
+	public function force_delete_get($id=null)
+	{
+		$find = $this->customer->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->forceDelete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 }
