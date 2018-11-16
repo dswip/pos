@@ -37,6 +37,30 @@ class Kecamatan extends Rest_api
 		];
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
+
+	/* Delete */
+	public function delete_post($id=null)
+	{
+		$find = $this->kecamatan->find($id);
+		$response = (!empty($find))?['status' => ($find->delete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
+
+	/* Restore */
+	public function restore_get($id=null)
+	{
+		$find = $this->kecamatan->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->restore())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
+
+	/* Force Delete */
+	public function force_delete_get($id=null)
+	{
+		$find = $this->kecamatan->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->forceDelete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
 }
 
 /* End of file Kecamatan.php */
