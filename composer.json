@@ -1,5 +1,6 @@
 {
     "require": {
-        "illuminate/database": "^5.7"
+        "illuminate/database": "^5.7",
+        "lcobucci/jwt": "^3.2"
     }
 }
