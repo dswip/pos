@@ -80,7 +80,11 @@ class Branch extends Rest_api
 			$this->branch->bank_account = $this->post('bank_account');
 			$this->branch->cash_account = $this->post('cash_account');
 			$this->branch->save();
-			$response = $this->branch;
+			$response = 
+			[
+				'status' => 'success',
+				'data' => $this->branch
+			];
 		}
 		else
 		{
@@ -100,7 +104,9 @@ class Branch extends Rest_api
 	/* View */
 	public function view_get($id=null)
 	{
-		$this->response($this->branch->find($id),REST_Controller::HTTP_OK);
+		$find = $this->branch->find($id);
+		$response = (!empty($find))?['status' => 'success','data' => $find]:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Update */
@@ -183,21 +189,24 @@ class Branch extends Rest_api
 	public function delete_get($id=null)
 	{
 		$find = $this->branch->find($id);
-		$this->response($find->delete(),REST_Controller::HTTP_OK);
+		$response = (!empty($find))?['status' => ($find->delete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Restore */
 	public function restore_get($id=null)
 	{
 		$find = $this->branch->withTrashed()->find($id);
-		$this->response($find->restore(),REST_Controller::HTTP_OK);
+		$response = (!empty($find))?['status' => ($find->restore())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Force Delete */
 	public function force_delete_get($id=null)
 	{
 		$find = $this->branch->withTrashed()->find($id);
-		$this->response($find->forceDelete(),REST_Controller::HTTP_OK);
+		$response = (!empty($find))?['status' => ($find->forceDelete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 }
 
