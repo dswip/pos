@@ -74,7 +74,9 @@ class Category extends Rest_api
 	/* View */
 	public function view_get($id=null)
 	{
-		$this->response($this->category->find($id),REST_Controller::HTTP_OK);
+		$find = $this->category->find($id);
+		$response = (!empty($find))?['status' => 'success','data' => $find]:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Update */
@@ -95,7 +97,8 @@ class Category extends Rest_api
 			$find->save();
 			$response = 
 			[
-				'status' => 'success'
+				'status' => 'success',
+				'data' => $find
 			];
 		}
 		else
