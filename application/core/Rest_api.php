@@ -16,7 +16,15 @@ class Rest_api extends REST_Controller
 		$get_token = $this->security->get_token();
 		if(!empty($get_token))
 		{
-
+			try
+			{
+				$this->security->jwt_decode($get_token);
+			}
+			catch (Exception $e)
+			{
+				header('content-type:application/json');
+				exit(json_encode(['status' => 'failed','message_code' => 'invalid_token','message' => $e->getMessage()]));			
+			}
 		}
 		else
 		{
