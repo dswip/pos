@@ -1,11 +1,19 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
-use Lcobucci\JWT\Builder;
+use \Firebase\JWT\JWT;
 class MY_Security extends CI_Security
 {
+	protected $jwt_key = 'gpsJWT';
 
-	public function jwt()
+	/* Encode JWT */
+	public function jwt_encode(array $data)
 	{
-		return new Builder();
+		return JWT::encode($data,$this->jwt_key);
+	}
+
+	/* Decode JWT */
+	public function jwt_decode($token)
+	{
+		return JWT::decode($token,$this->jwt_key,array('HS256'));
 	}
 
 	/* Get User Agent */
@@ -64,17 +72,17 @@ class MY_Security extends CI_Security
 	}
 
 	/* Get Token */
-	public function get_token()
+	public function get_token($key='token')
 	{
 		// Codeigniter Instance
 		$ci =& get_instance();
 		if(method_exists($ci,'post'))
 		{
-			$token 	= (!empty($ci->input->get_request_header('token')))?$ci->input->get_request_header('token',TRUE):$ci->post('token');
+			$token 	= (!empty($ci->input->get_request_header($key)))?$ci->input->get_request_header($key,TRUE):$ci->post($key);
 		}
 		else
 		{
-			$token 	= (!empty($ci->input->get_request_header('token')))?$ci->input->get_request_header('token',TRUE):$ci->input->post('token');
+			$token 	= (!empty($ci->input->get_request_header($key)))?$ci->input->get_request_header($key,TRUE):$ci->input->post($key);
 		}
 		return $token;
 	}
