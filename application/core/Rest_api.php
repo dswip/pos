@@ -7,11 +7,11 @@ class Rest_api extends REST_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->autentication();
+		$this->authentication();
 	}
 
 	/* Authentication */
-	public function autentication()
+	public function authentication()
 	{
 		$get_token = $this->security->get_token();
 		if(!empty($get_token))
@@ -29,7 +29,7 @@ class Rest_api extends REST_Controller
 		else
 		{
 			// header('content-type:application/json');
-			// exit(json_encode(['status' => 'failed','message_code' => 'authenication_required','message' => 'authentication required']));
+			// exit(json_encode(['status' => 'failed','message_code' => 'authentication_required','message' => 'authentication required']));
 		}
 	}
 }
