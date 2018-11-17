@@ -2,6 +2,8 @@
 require APPPATH . 'libraries/rest/REST_Controller.php';
 class Rest_api extends REST_Controller
 {
+	protected $auth_method;
+
 	function __construct()
 	{
 		parent::__construct();
@@ -11,10 +13,16 @@ class Rest_api extends REST_Controller
 	/* Authentication */
 	public function autentication()
 	{
-		// if(!Modules::run('user/user_module/_is_logged_in'))
-		// {
-		// 	// Require API Key
-		// }
+		$get_token = $this->security->get_token();
+		if(!empty($get_token))
+		{
+
+		}
+		else
+		{
+			// header('content-type:application/json');
+			// exit(json_encode(['status' => 'failed','message_code' => 'authenication_required','message' => 'authentication required']));
+		}
 	}
 }
 
