@@ -17,10 +17,25 @@ class Auth extends Rest_api
 		$this->form_validation->set_data($this->post());
 		if ($this->form_validation->run() == TRUE)
 		{
-			$find = $this->member->where('email',$this->post('identity'))->first();
+			$find = $this->member->where([
+				['email','=',$this->post('identity')],
+				['password','=',$this->post('password')]
+			])->first();
 			if(!empty($find))
 			{
-
+				$response = 
+				[
+					'status' => 'successs',
+					'data' => 
+					[
+						'token' => $this->security->jwt_encode([
+							'member_id' => $find->id,
+							'first_name' => $find->first_name,
+							'type' => $find->type,
+							'email' => $find->email
+						])
+					]
+				];
 			}
 			else
 			{
