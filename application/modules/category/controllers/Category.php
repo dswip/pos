@@ -116,7 +116,7 @@ class Category extends Rest_api
 	}
 
 	/* Delete */
-	public function delete_post($id=null)
+	public function delete_get($id=null)
 	{
 		$find = $this->category->find($id);
 		$response = (!empty($find))?['status' => ($find->delete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
