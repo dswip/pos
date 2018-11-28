@@ -104,19 +104,15 @@ class Product extends Rest_api
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* View Product */
+	/* View */
 	public function view_get($id=null)
 	{
 		$find = $this->product->find($id);
-		$response = 
-		[
-			'status' => (!empty($find))?'success':'failed',
-			'data' => $find
-		];
+		$response = (!empty($find))?['status' => 'success','data' => $find]:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Update Product */
+	/* Update */
 	public function update_post($id=null)
 	{
 		$find = $this->product->find($id);
@@ -165,18 +161,28 @@ class Product extends Rest_api
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Soft Delete Product */
-	public function delete_get($id)
+	/* Delete */
+	public function delete_get($id=null)
 	{
 		$find = $this->product->find($id);
-		$this->response($find->delete(),REST_Controller::HTTP_OK);
+		$response = (!empty($find))?['status' => ($find->delete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Force Delete Product */
-	public function force_delete_get()
+	/* Restore */
+	public function restore_get($id=null)
 	{
-		$find = $this->product->find($id);
-		$this->response($find->forceDelete(),REST_Controller::HTTP_OK);	
+		$find = $this->product->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->restore())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
+
+	/* Force Delete */
+	public function force_delete_get($id=null)
+	{
+		$find = $this->product->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->forceDelete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 }
 
