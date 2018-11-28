@@ -100,56 +100,42 @@ class Member extends Rest_api
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* View Member */
+	/* View */
 	public function view_get($id=null)
 	{
-		$find_member = $this->member->find($id);
-		$response = 
-		[
-			'status' => (!empty($find_member))?'success':'failed',
-			'data' => $find_member
-		];
+		$find = $this->member->find($id);
+		$response = (!empty($find))?['status' => 'success','data' => $find]:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Update Member */
+	/* Update */
 	public function update_post($id=null)
 	{
-		$find_member = $this->member->find($id);
-		// $find_member->update->
+
 	}
 
-	/* Delete Member */
-	public function delete_post()
+	/* Delete */
+	public function delete_get($id=null)
 	{
-		$find_member = $this->member->find($id);
-		$delete = (!empty($find_member))?$find_member->delete():false;
-		$response = 
-		[
-			'status' => ($delete)?'success':'failed',
-			'message_code' => ($delete)?null:'unable to find data'
-		];
+		$find = $this->member->find($id);
+		$response = (!empty($find))?['status' => ($find->delete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Restore */
-	public function restore_post()
+	public function restore_get($id=null)
 	{
-		$find = $this->member->withTrashed()->find($this->post('id'));
-		$this->response($find->restore(),REST_Controller::HTTP_OK);
+		$find = $this->member->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->restore())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
 	/* Force Delete */
-	public function force_delete_post()
+	public function force_delete_get($id=null)
 	{
-		$find_member = $this->member->find($id);
-		$delete = (!empty($find_member))?$find_member->force_delete():false;
-		$response = 
-		[
-			'status' => ($delete)?'success':'failed',
-			'message_code' => ($delete)?null:'unable to find data'
-		];
-		$this->response($response,REST_Controller::HTTP_OK);	
+		$find = $this->member->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->forceDelete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 }
 
