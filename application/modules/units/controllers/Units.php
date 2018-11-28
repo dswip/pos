@@ -9,7 +9,7 @@ class Units extends Rest_api
 		]);
 	}
 
-	/* Units List */
+	/* List */
 	public function index_get()
 	{
 		$model 			= $this->unit;
@@ -37,7 +37,7 @@ class Units extends Rest_api
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Add Units */
+	/* Add */
 	public function add_post()
 	{
 		$this->form_validation->set_rules('name', 'name', 'trim|required|max_length[100]');
@@ -70,19 +70,15 @@ class Units extends Rest_api
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* View Units */
+	/* View */
 	public function view_get($id=null)
 	{
 		$find = $this->units->find($id);
-		$response = 
-		[
-			'status' => (!empty($find))?'success':'failed',
-			'data' => $find
-		];
+		$response = (!empty($find))?['status' => 'success','data' => $find]:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Update Units */
+	/* Update */
 	public function update_post($id=null)
 	{
 		$find = $this->units->find($id);
@@ -110,18 +106,28 @@ class Units extends Rest_api
 		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Soft Delete Units */
-	public function delete_get($id)
+	/* Delete */
+	public function delete_get($id=null)
 	{
 		$find = $this->units->find($id);
-		$this->response($find->delete(),REST_Controller::HTTP_OK);
+		$response = (!empty($find))?['status' => ($find->delete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 
-	/* Force Delete Units */
-	public function force_delete_get()
+	/* Restore */
+	public function restore_get($id=null)
 	{
-		$find = $this->units->find($id);
-		$this->response($find->forceDelete(),REST_Controller::HTTP_OK);	
+		$find = $this->units->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->restore())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
+	}
+
+	/* Force Delete */
+	public function force_delete_get($id=null)
+	{
+		$find = $this->units->withTrashed()->find($id);
+		$response = (!empty($find))?['status' => ($find->forceDelete())?'success':'failed']:['status' => 'failed','message_code' => 'data_not_found','message' => 'data not found'];
+		$this->response($response,REST_Controller::HTTP_OK);
 	}
 }
 
