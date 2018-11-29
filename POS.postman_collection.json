@@ -325,6 +325,67 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/category/delete/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"category",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/category/restore/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"category",
+								"restore",
+								"1"
+							]
+						},
+						"description": "Restore"
+					},
+					"response": []
+				},
+				{
+					"name": "Force Delete Category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/category/force_delete/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"category",
+								"force_delete",
+								"1"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -373,6 +434,106 @@
 							"path": [
 								"customer",
 								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/customer/view/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"customer",
+								"view",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/customer/update/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"customer",
+								"update",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/customer/delete/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"customer",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Restore Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/customer/restore/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"customer",
+								"restore",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Force Delete Customer",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{api_url}}/customer/force_delete/1",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"customer",
+								"force_delete",
+								"1"
 							]
 						}
 					},
@@ -486,7 +647,7 @@
 					},
 					"response": [
 						{
-							"id": "9154bf4e-303b-4a16-a976-f2cec88b88c3",
+							"id": "b479fe88-b3bb-486f-88eb-68c9c6d8cad4",
 							"name": "Search Query",
 							"originalRequest": {
 								"method": "GET",
@@ -613,7 +774,7 @@
 							"body": "{\"draw\":false,\"record_total\":500,\"record_filtered\":500,\"data\":[{\"id\":1102,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Singkil\"},{\"id\":1103,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Selatan\"},{\"id\":1104,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tenggara\"},{\"id\":1105,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Timur\"},{\"id\":1106,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tengah\"},{\"id\":1107,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat\"},{\"id\":1108,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Besar\"},{\"id\":1111,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Utara\"},{\"id\":1112,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Barat Daya\"},{\"id\":1114,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Tamiang\"},{\"id\":1116,\"id_prov\":\"11\",\"nama\":\"Kab. Aceh Jaya\"},{\"id\":1171,\"id_prov\":\"11\",\"nama\":\"Kota Banda Aceh\"}]}"
 						},
 						{
-							"id": "d7d6fee5-19e9-440b-8bf3-e46421e5ace7",
+							"id": "03683333-603e-4925-83ee-609c25e50b91",
 							"name": "List & Query With AJax",
 							"originalRequest": {
 								"method": "GET",
