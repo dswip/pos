@@ -1,7 +1,7 @@
 {
     "development": {
         "dsn": null,
-        "hostname": "localhost",
+        "hostname": "db",
         "username": "root",
         "password": "",
         "database": "pos",
